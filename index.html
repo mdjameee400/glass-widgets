@@ -49,7 +49,6 @@
             background-color: #1a1b1f;
         }
 
-        /* Fullscreen WebGL Ambient Light & Material Shader Canvas */
         #webgl-bg {
             position: fixed;
             inset: 0;
@@ -59,7 +58,6 @@
             z-index: 0;
         }
 
-        /* Main Bento Stage */
         .stage-wrapper {
             position: relative;
             z-index: 10;
@@ -99,7 +97,6 @@
             }
         }
 
-        /* 3D Material Card Base */
         .bento-item {
             position: relative;
             transform-style: preserve-3d;
@@ -132,7 +129,6 @@
                 inset 0 -1px 2px rgba(0, 0, 0, 0.06);
         }
 
-        /* Specular 3D Glare Overlay */
         .specular-glare {
             position: absolute;
             inset: 0;
@@ -152,7 +148,6 @@
             mix-blend-mode: overlay;
         }
 
-        /* Rounded Shapes */
         .card-rect {
             border-radius: 30px;
         }
@@ -165,12 +160,10 @@
             border-radius: 9999px;
         }
 
-        /* Custom Scrollbar & Range resets */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
 
-        /* Animations */
         @keyframes bell-ring {
 
             0%,
@@ -219,7 +212,6 @@
             animation: pulse-rec 1.2s infinite ease-in-out;
         }
 
-        /* Wallet Cards 3D Fanning */
         .wallet-card {
             transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.35s ease;
             box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.35);
@@ -237,7 +229,6 @@
             transform: translateY(2px) scale(1.02);
         }
 
-        /* Floating subtle 3D control bar */
         .hud-bar {
             position: fixed;
             bottom: 16px;
@@ -279,15 +270,11 @@
 
 <body>
 
-    <!-- WebGL 3D Studio Lighting & Particle Shader Background -->
     <canvas id="webgl-bg"></canvas>
 
     <div class="stage-wrapper" id="stage-wrapper">
         <div class="bento-board" id="bento-board">
 
-            <!-- ========================================================
-           ROW 1, COL 1: ANALOG CLOCK (162x162 Circle)
-           ======================================================== -->
             <div class="bento-item surface-black card-circle w-[162px] h-[162px] cursor-pointer overflow-hidden"
                 id="clock-widget" style="grid-column: 1; grid-row: 1;"
                 title="Click to toggle Live Local Time vs Design Time (10:09)">
@@ -295,19 +282,16 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 1, COL 2: BRIGHTNESS SLIDER + MOON + SIGNAL (162x162)
-           ======================================================== -->
             <div class="w-[162px] h-[162px] flex justify-between items-stretch" style="grid-column: 2; grid-row: 1;">
-                <!-- Brightness Vertical Pill Slider -->
+                
                 <div class="bento-item card-pill w-[72px] h-[162px] overflow-hidden cursor-ns-resize relative select-none"
                     id="brightness-slider"
                     style="background: #050505; box-shadow: 0 12px 24px -6px rgba(0,0,0,0.22), inset 0 1px 1px rgba(255,255,255,0.15);"
                     title="Drag vertically to adjust brightness">
-                    <!-- White Fill from Top (Matches Reference Image: Top 77% White, Bottom 23% Black) -->
+                    
                     <div id="brightness-fill" class="w-full bg-white transition-all duration-75" style="height: 77%;">
                     </div>
-                    <!-- Sun Icon at Top -->
+                    
                     <div class="absolute top-[28px] left-0 right-0 flex justify-center pointer-events-none">
                         <svg id="brightness-icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
                             class="transition-transform duration-300">
@@ -320,9 +304,8 @@
                     <div class="specular-glare"></div>
                 </div>
 
-                <!-- Right Column: Moon Circle + Cellular Signal Circle -->
                 <div class="flex flex-col justify-between w-[72px] h-[162px]">
-                    <!-- Moon / Night Button -->
+                    
                     <button type="button" id="moon-btn"
                         class="bento-item surface-black card-circle w-[72px] h-[72px] flex items-center justify-center cursor-pointer focus:outline-none"
                         title="Toggle Ambient Night Mode">
@@ -333,7 +316,6 @@
                         <div class="specular-glare"></div>
                     </button>
 
-                    <!-- Signal Strength Button -->
                     <button type="button" id="signal-btn"
                         class="bento-item surface-black card-circle w-[72px] h-[72px] flex items-center justify-center cursor-pointer focus:outline-none"
                         title="Click to cycle signal bars">
@@ -349,13 +331,10 @@
                 </div>
             </div>
 
-            <!-- ========================================================
-           ROW 1, COL 3-4: WEATHER WIDGET (362x162 Wide Black Card)
-           ======================================================== -->
             <div class="bento-item surface-black card-rect w-[362px] h-[162px] p-[20px] flex flex-col justify-between overflow-hidden cursor-pointer"
                 id="weather-widget" style="grid-column: 3 / span 2; grid-row: 1;"
                 title="Click forecast days or temperature to switch °F / °C">
-                <!-- Top Row: Animated Weather Canvas + Temp & Condition -->
+                
                 <div class="flex items-center gap-[18px]">
                     <div class="relative w-[78px] h-[64px] flex-shrink-0">
                         <canvas id="weather-canvas" width="156" height="128" class="w-full h-full"></canvas>
@@ -371,9 +350,8 @@
                     </div>
                 </div>
 
-                <!-- Bottom 5-Day Forecast Row -->
                 <div class="grid grid-cols-5 gap-2 pt-1 text-center" id="forecast-row">
-                    <!-- MON -->
+                    
                     <div class="forecast-day flex flex-col items-center gap-[5px] py-1 rounded-xl hover:bg-white/5 transition"
                         data-day="MON" data-temp="79" data-desc="Partly Cloudy with Light Rain" data-type="partly">
                         <span class="text-[9px] font-medium tracking-wider text-[#7c7c82]">MON</span>
@@ -385,7 +363,7 @@
                             </svg>
                         </div>
                     </div>
-                    <!-- TUE -->
+                    
                     <div class="forecast-day flex flex-col items-center gap-[5px] py-1 rounded-xl hover:bg-white/5 transition"
                         data-day="TUE" data-temp="74" data-desc="Scattered Showers" data-type="rain">
                         <span class="text-[9px] font-medium tracking-wider text-[#7c7c82]">TUE</span>
@@ -398,7 +376,7 @@
                             </svg>
                         </div>
                     </div>
-                    <!-- WED -->
+                    
                     <div class="forecast-day flex flex-col items-center gap-[5px] py-1 rounded-xl hover:bg-white/5 transition"
                         data-day="WED" data-temp="72" data-desc="Light Rain & Breeze" data-type="rain">
                         <span class="text-[9px] font-medium tracking-wider text-[#7c7c82]">WED</span>
@@ -411,7 +389,7 @@
                             </svg>
                         </div>
                     </div>
-                    <!-- THU -->
+                    
                     <div class="forecast-day flex flex-col items-center gap-[5px] py-1 rounded-xl hover:bg-white/5 transition"
                         data-day="THU" data-temp="81" data-desc="Mostly Sunny & Warm" data-type="partly">
                         <span class="text-[9px] font-medium tracking-wider text-[#7c7c82]">THU</span>
@@ -423,7 +401,7 @@
                             </svg>
                         </div>
                     </div>
-                    <!-- FRI -->
+                    
                     <div class="forecast-day flex flex-col items-center gap-[5px] py-1 rounded-xl hover:bg-white/5 transition"
                         data-day="FRI" data-temp="86" data-desc="Clear Golden Sunshine" data-type="sunny">
                         <span class="text-[9px] font-medium tracking-wider text-[#7c7c82]">FRI</span>
@@ -437,21 +415,17 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 1-2, COL 5: MUSIC PLAYER + SLEEP MODE STACK (190x348)
-           ======================================================== -->
             <div class="w-[190px] h-[348px] flex flex-col justify-between"
                 style="grid-column: 5; grid-row: 1 / span 2;">
-                <!-- White Vinyl Music Card (190x260) -->
+                
                 <div class="bento-item surface-white card-rect w-[190px] h-[260px] flex flex-col justify-between items-center pb-[20px] overflow-hidden relative"
                     id="music-widget">
-                    <!-- Top Flush 3D Spinning Vinyl Canvas -->
+                    
                     <div class="w-[190px] h-[96px] relative overflow-hidden flex justify-center">
                         <canvas id="vinyl-canvas" width="380" height="192"
                             class="w-[190px] h-[96px] cursor-grab active:cursor-grabbing"></canvas>
                     </div>
 
-                    <!-- Track Info -->
                     <div class="text-center mt-[2px] px-3">
                         <div id="track-title"
                             class="text-[13.5px] font-semibold text-[#050505] tracking-[-0.01em] leading-tight">Neon
@@ -459,9 +433,8 @@
                         <div id="track-artist" class="text-[11.5px] font-normal text-[#8e8e93] mt-[3px]">Koë</div>
                     </div>
 
-                    <!-- Playback Controls -->
                     <div class="flex items-center justify-center gap-[20px] my-[4px]">
-                        <!-- Prev -->
+                        
                         <button type="button" id="music-prev"
                             class="text-[#050505] hover:opacity-70 active:scale-90 transition p-1"
                             title="Previous Track">
@@ -469,7 +442,7 @@
                                 <path d="M6 5h2.5v14H6V5zm4.5 7 9.5 7V5l-9.5 7z" />
                             </svg>
                         </button>
-                        <!-- Play/Pause Circle -->
+                        
                         <button type="button" id="music-toggle"
                             class="w-[38px] h-[38px] rounded-full bg-[#050505] text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition"
                             title="Play / Pause Synthwave Audio">
@@ -482,7 +455,7 @@
                                 <path d="M7 5v14l12-7z" />
                             </svg>
                         </button>
-                        <!-- Next -->
+                        
                         <button type="button" id="music-next"
                             class="text-[#050505] hover:opacity-70 active:scale-90 transition p-1" title="Next Track">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -491,7 +464,6 @@
                         </button>
                     </div>
 
-                    <!-- Progress Scrubber Bar -->
                     <div class="w-full px-[24px]">
                         <div id="music-progress-Wrap"
                             class="w-full h-[5px] bg-[#ececef] rounded-full overflow-hidden cursor-pointer relative">
@@ -503,11 +475,10 @@
                     <div class="specular-glare"></div>
                 </div>
 
-                <!-- Bottom Black Sleep Mode Pill (190x70) -->
                 <button type="button" id="sleep-mode-btn"
                     class="bento-item surface-black card-pill w-[190px] h-[70px] px-[26px] flex items-center gap-[14px] cursor-pointer focus:outline-none group"
                     title="Toggle Sleep Mode">
-                    <!-- Bed Icon -->
+                    
                     <svg width="26" height="20" viewBox="0 0 28 22" fill="none"
                         class="flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
                         <path d="M3 11V6a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v5" stroke="#ffffff" stroke-width="2"
@@ -525,18 +496,15 @@
                 </button>
             </div>
 
-            <!-- ========================================================
-           ROW 2, COL 1: VOLUME SLIDER + BELL + RECORD (162x162)
-           ======================================================== -->
             <div class="w-[162px] h-[162px] flex justify-between items-stretch" style="grid-column: 1; grid-row: 2;">
-                <!-- Volume Vertical Pill Slider -->
+                
                 <div class="bento-item card-pill w-[72px] h-[162px] overflow-hidden cursor-ns-resize relative select-none"
                     id="volume-slider"
                     style="background: #050505; box-shadow: 0 12px 24px -6px rgba(0,0,0,0.22), inset 0 1px 1px rgba(255,255,255,0.15);"
                     title="Drag vertically to adjust synth volume">
-                    <!-- White Fill from Top (Matches Reference Image: 52% White, 48% Black) -->
+                    
                     <div id="volume-fill" class="w-full bg-white transition-all duration-75" style="height: 52%;"></div>
-                    <!-- Eighth Note Icon -->
+                    
                     <div class="absolute top-[28px] left-0 right-0 flex justify-center pointer-events-none">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="#050505">
                             <path
@@ -546,9 +514,8 @@
                     <div class="specular-glare"></div>
                 </div>
 
-                <!-- Right Column: White Bell Circle + Black Record Circle -->
                 <div class="flex flex-col justify-between w-[72px] h-[162px]">
-                    <!-- White Notification Bell Circle -->
+                    
                     <button type="button" id="bell-btn"
                         class="bento-item surface-white card-circle w-[72px] h-[72px] flex items-center justify-center cursor-pointer focus:outline-none"
                         title="Ring Notification Chime">
@@ -559,7 +526,6 @@
                         <div class="specular-glare"></div>
                     </button>
 
-                    <!-- Black Record Button Circle -->
                     <button type="button" id="record-btn"
                         class="bento-item surface-black card-circle w-[72px] h-[72px] flex items-center justify-center cursor-pointer focus:outline-none"
                         title="Toggle Live Audio Waveform Recording">
@@ -574,9 +540,6 @@
                 </div>
             </div>
 
-            <!-- ========================================================
-           ROW 2, COL 2: CHARGING / BATTERY WIDGET (162x162)
-           ======================================================== -->
             <div class="bento-item surface-black card-rect w-[162px] h-[162px] p-[18px] flex flex-col justify-between items-center cursor-pointer"
                 id="battery-widget" style="grid-column: 2; grid-row: 2;"
                 title="Click battery cells to set level or toggle fast charging">
@@ -587,7 +550,6 @@
                     </div>
                 </div>
 
-                <!-- 5-Segment Battery Container -->
                 <div class="w-full h-[58px] bg-[#1a1a1c] rounded-[16px] p-[6px] grid grid-cols-5 gap-[5px] items-stretch"
                     id="battery-cells">
                     <div class="battery-cell rounded-[9px] bg-[#32f078] shadow-[0_0_12px_rgba(50,240,120,0.35)] transition-all duration-300"
@@ -604,18 +566,15 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 2, COL 3: OFF/ON TOGGLE + AUDIO WAVEFORM PILL (176x162)
-           ======================================================== -->
             <div class="w-[176px] h-[162px] flex flex-col justify-between" style="grid-column: 3; grid-row: 2;">
-                <!-- Top Pill: OFF / ON Switch (176x72) -->
+                
                 <div class="bento-item surface-black card-pill w-[176px] h-[72px] p-[7px] flex items-center justify-between cursor-pointer relative"
                     id="power-switch" title="Toggle Switch">
-                    <!-- Sliding White Pill Thumb -->
+                    
                     <div id="switch-thumb"
                         class="w-[78px] h-[58px] rounded-full bg-white shadow-md transition-transform duration-300 cubic-bezier(0.34, 1.56, 0.64, 1) z-10">
                     </div>
-                    <!-- Labels Overlay -->
+                    
                     <div class="absolute inset-0 flex items-center justify-between px-[28px] pointer-events-none z-20">
                         <span id="switch-label-off"
                             class="text-[12.5px] font-medium text-[#050505] transition-colors duration-200">OFF</span>
@@ -625,10 +584,9 @@
                     <div class="specular-glare"></div>
                 </div>
 
-                <!-- Bottom Pill: Voice Memo Waveform Scrubber (176x72) -->
                 <div class="bento-item surface-white card-pill w-[176px] h-[72px] px-[14px] flex items-center gap-[10px] overflow-hidden relative"
                     id="waveform-widget" title="Click Play/Pause or scrub the red playhead">
-                    <!-- Circular Outlined Pause/Play Button -->
+                    
                     <button type="button" id="wave-toggle-btn"
                         class="w-[42px] h-[42px] rounded-full border-[2px] border-[#050505] flex items-center justify-center flex-shrink-0 text-[#050505] hover:bg-black/5 active:scale-95 transition">
                         <svg id="wave-pause-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -641,10 +599,9 @@
                         </svg>
                     </button>
 
-                    <!-- Waveform Canvas + Red Playhead Scrubber -->
                     <div class="relative flex-1 h-full flex items-center cursor-ew-resize" id="wave-scrub-area">
                         <canvas id="wave-canvas" width="200" height="120" class="w-full h-[60px]"></canvas>
-                        <!-- Red Vertical Playhead Line + Top Dot -->
+                        
                         <div id="wave-playhead"
                             class="absolute top-[11px] bottom-[9px] w-[1.5px] bg-[#f03e36] pointer-events-none transition-all duration-75"
                             style="left: 14%;">
@@ -655,9 +612,6 @@
                 </div>
             </div>
 
-            <!-- ========================================================
-           ROW 2, COL 4: COMPASS WIDGET (162x162 Circle)
-           ======================================================== -->
             <div class="bento-item surface-black card-circle w-[162px] h-[162px] cursor-grab active:cursor-grabbing overflow-hidden"
                 id="compass-widget" style="grid-column: 4; grid-row: 2;"
                 title="Drag or move cursor to rotate 3D magnetic compass">
@@ -665,20 +619,16 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 3, COL 1: TODAY CHECKLIST WIDGET (162x162)
-           ======================================================== -->
             <div class="bento-item surface-black card-rect w-[162px] h-[162px] p-[18px] flex flex-col justify-between"
                 id="todo-widget" style="grid-column: 1; grid-row: 3;">
-                <!-- Header -->
+                
                 <div class="flex items-center justify-between">
                     <span class="text-[12px] font-normal text-[#8e8e93]">Today</span>
                     <span id="todo-count" class="text-[16px] font-medium text-white leading-none">6</span>
                 </div>
 
-                <!-- Checklist Items -->
                 <div class="flex flex-col gap-[9px] my-auto pt-[4px]" id="todo-list">
-                    <!-- Item 1 -->
+                    
                     <label class="flex items-center gap-[9px] cursor-pointer group" data-index="0">
                         <span
                             class="todo-box w-[16px] h-[16px] rounded-[5px] bg-[#f872e2] flex items-center justify-center transition-all duration-200">
@@ -692,7 +642,6 @@
                             food</span>
                     </label>
 
-                    <!-- Item 2 -->
                     <label class="flex items-center gap-[9px] cursor-pointer group" data-index="1">
                         <span
                             class="todo-box w-[16px] h-[16px] rounded-[5px] bg-[#1e1e21] border border-[#2e2e32] flex items-center justify-center transition-all duration-200">
@@ -706,7 +655,6 @@
                             dishes</span>
                     </label>
 
-                    <!-- Item 3 -->
                     <label class="flex items-center gap-[9px] cursor-pointer group" data-index="2">
                         <span
                             class="todo-box w-[16px] h-[16px] rounded-[5px] bg-[#1e1e21] border border-[#2e2e32] flex items-center justify-center transition-all duration-200">
@@ -721,7 +669,6 @@
                     </label>
                 </div>
 
-                <!-- Bottom Progress Bar -->
                 <div class="w-full h-[6px] bg-[#222225] rounded-full overflow-hidden">
                     <div id="todo-progress" class="h-full bg-[#f872e2] rounded-full transition-all duration-300"
                         style="width: 30%;"></div>
@@ -729,9 +676,6 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 3, COL 2: WATER INTAKE FLUID WAVE CIRCLE (162x162)
-           ======================================================== -->
             <div class="bento-item surface-black card-circle w-[162px] h-[162px] overflow-hidden cursor-pointer relative flex flex-col items-center"
                 id="water-widget" style="grid-column: 2; grid-row: 3;"
                 title="Click to log +250ml hydration or move cursor to slosh water">
@@ -744,35 +688,31 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 3, COL 3: WALLET / BALANCE CARD (162x162)
-           ======================================================== -->
             <div class="bento-item surface-black card-rect w-[162px] h-[162px] p-[14px] flex flex-col justify-between overflow-hidden cursor-pointer relative"
                 id="wallet-widget" style="width: 162px; justify-self: start; grid-column: 3; grid-row: 3;"
                 title="Click to cycle active card & balance">
-                <!-- Stacked Cards Container -->
+                
                 <div class="relative w-full h-[90px] rounded-t-[18px] overflow-hidden pt-[2px]">
-                    <!-- Card 1: Blue -->
+                    
                     <div id="card-blue"
                         class="wallet-card wallet-card-1 absolute left-0 right-0 top-[0px] h-[64px] rounded-[14px] bg-[#2b99ff]">
                     </div>
-                    <!-- Card 2: Yellow -->
+                    
                     <div id="card-yellow"
                         class="wallet-card wallet-card-2 absolute left-0 right-0 top-[16px] h-[64px] rounded-[14px] bg-[#f5b418]">
                     </div>
-                    <!-- Card 3: Red with subtle chip/logo shapes -->
+                    
                     <div id="card-red"
                         class="wallet-card wallet-card-3 absolute left-0 right-0 top-[33px] h-[64px] rounded-[14px] bg-[#d93831] px-[14px] pt-[16px] flex justify-between items-start">
-                        <!-- Left rounded chip -->
+                        
                         <div class="w-[26px] h-[16px] rounded-[4px] bg-[#e36964]/75"></div>
-                        <!-- Right overlapping circles (Mastercard style silhouette) -->
+                        
                         <div class="flex items-center">
                             <div class="w-[15px] h-[15px] rounded-full bg-[#e36964]/75"></div>
                             <div class="w-[15px] h-[15px] rounded-full bg-[#e36964]/75 -ml-[6px]"></div>
                         </div>
                     </div>
 
-                    <!-- Curved Black Pocket Mask Overlapping the Cards -->
                     <svg viewBox="0 0 134 32"
                         class="absolute -bottom-[2px] left-0 right-0 w-full h-[28px] z-20 pointer-events-none"
                         preserveAspectRatio="none">
@@ -780,7 +720,6 @@
                     </svg>
                 </div>
 
-                <!-- Bottom Balance Text -->
                 <div class="px-[4px] pb-[2px] z-20">
                     <div id="wallet-label" class="text-[8px] font-medium tracking-[0.08em] text-[#7c7c82] uppercase">
                         BALANCE</div>
@@ -790,12 +729,9 @@
                 <div class="specular-glare"></div>
             </div>
 
-            <!-- ========================================================
-           ROW 3, COL 4-5: CALENDAR SCHEDULE CARD (376x162)
-           ======================================================== -->
             <div class="bento-item surface-white card-rect h-[162px] p-[18px] flex justify-between relative overflow-hidden"
                 id="calendar-widget" style="width: 390px; margin-left: -14px; grid-column: 4 / span 2; grid-row: 3;">
-                <!-- Left Column: Day & Count -->
+                
                 <div class="flex flex-col justify-between py-[2px] pl-[4px] cursor-pointer" id="calendar-date-box"
                     title="Click to cycle day">
                     <div>
@@ -808,16 +744,14 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Two Event Blocks + Red Current-Time Line -->
                 <div class="w-[244px] flex flex-col justify-between relative" id="calendar-events-area">
-                    <!-- Draggable / Interactive Red Timeline Indicator -->
+                    
                     <div id="calendar-red-line"
                         class="absolute -left-[22px] -right-[18px] top-[7px] flex items-center z-30 pointer-events-none transition-all duration-300">
                         <div class="w-[8px] h-[8px] rounded-full bg-[#f03e36] flex-shrink-0"></div>
                         <div class="w-full h-[1.5px] bg-[#f03e36]"></div>
                     </div>
 
-                    <!-- Event 1 -->
                     <div class="cal-event-card w-full h-[58px] rounded-[14px] bg-[#050505] px-[14px] flex flex-col justify-center cursor-pointer hover:bg-[#141417] transition"
                         data-slot="0" title="Click to move timeline & highlight event">
                         <div class="text-[12px] font-normal text-white leading-snug" id="event-1-title">Deep Focus
@@ -826,7 +760,6 @@
                             AM</div>
                     </div>
 
-                    <!-- Event 2 -->
                     <div class="cal-event-card w-full h-[58px] rounded-[14px] bg-[#050505] px-[14px] flex flex-col justify-center cursor-pointer hover:bg-[#141417] transition"
                         data-slot="1" title="Click to move timeline & highlight event">
                         <div class="text-[12px] font-normal text-white leading-snug" id="event-2-title">Client Sync:
@@ -841,7 +774,6 @@
         </div>
     </div>
 
-    <!-- Minimal Floating 3D View & Sound Controller -->
     <div class="hud-bar">
         <span>3D WebGL Material:</span>
         <button type="button" id="toggle-3d-tilt" class="hud-btn active">Interactive Tilt</button>
@@ -850,9 +782,6 @@
     </div>
 
     <script>
-        // =========================================================================
-        // 1. SYNTHESIZED WEB AUDIO ENGINE (Tactile Clicks, Chimes & Synthwave Loop)
-        // =========================================================================
         let audioCtx = null;
         let masterVolume = 0.52;
         let isMusicPlaying = false;
@@ -912,7 +841,7 @@
             { title: 'Velvet Skyline', artist: 'Sora', color: '#f872e2', notes: [293.66, 349.23, 440.00, 587.33, 440.00, 349.23] }
         ];
         let currentTrackIdx = 0;
-        let musicProgress = 28; // matches initial reference screenshot 28%
+        let musicProgress = 28;
 
         function startSynthLoop() {
             stopSynthLoop();
@@ -946,9 +875,6 @@
             }
         }
 
-        // =========================================================================
-        // 2. THREE.JS WEBGL STUDIO LIGHTING & AMBIENT 3D MATERIAL SHADER
-        // =========================================================================
         function initWebGLBackground() {
             const canvas = document.getElementById('webgl-bg');
             if (!window.THREE || !canvas) return;
@@ -961,7 +887,6 @@
             const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
             camera.position.z = 12;
 
-            // Subtle 3D studio light particles that appear gently when Sleep Mode is toggled or cursor moves
             const particleCount = 70;
             const geo = new THREE.BufferGeometry();
             const pos = new Float32Array(particleCount * 3);
@@ -1006,9 +931,6 @@
             animateWebGL();
         }
 
-        // =========================================================================
-        // 3. 3D PBR CARD TILT & SPECULAR SHADER INTERACTION
-        // =========================================================================
         let tiltEnabled = true;
         let isometricMode = false;
         const board = document.getElementById('bento-board');
@@ -1043,12 +965,9 @@
             });
         });
 
-        // =========================================================================
-        // 4. WIDGET 1: ANALOG CLOCK CANVAS (Exact 10:09 Reference + Live Time Toggle)
-        // =========================================================================
         const clockCanvas = document.getElementById('clock-canvas');
         const clockCtx = clockCanvas.getContext('2d');
-        let clockLiveMode = false; // Starts at exact reference image 10:09, click toggles live local clock!
+        let clockLiveMode = false;
 
         document.getElementById('clock-widget').addEventListener('click', () => {
             clockLiveMode = !clockLiveMode;
@@ -1064,7 +983,6 @@
 
             clockCtx.clearRect(0, 0, w, h);
 
-            // 12 Perimeter Hour Ticks
             for (let i = 0; i < 12; i++) {
                 const angle = (i * 30 - 90) * (Math.PI / 180);
                 clockCtx.save();
@@ -1080,7 +998,6 @@
                 clockCtx.restore();
             }
 
-            // Red Vertical Indicator Pill at 6 o'clock (above bottom tick, matching reference image)
             clockCtx.save();
             clockCtx.beginPath();
             clockCtx.moveTo(cx, cy + 78);
@@ -1093,7 +1010,6 @@
 
             let hourAngle, minAngle;
             if (!clockLiveMode) {
-                // Exact angles from reference screenshot (~10:09)
                 hourAngle = (304 - 90) * (Math.PI / 180);
                 minAngle = (58 - 90) * (Math.PI / 180);
             } else {
@@ -1104,7 +1020,6 @@
                 hourAngle = ((hrs + mins / 60) * 30 - 90) * (Math.PI / 180);
                 minAngle = ((mins + secs / 60) * 6 - 90) * (Math.PI / 180);
 
-                // Subtle sweeping second hand in live mode
                 const secAngle = (secs * 6 - 90) * (Math.PI / 180);
                 clockCtx.save();
                 clockCtx.translate(cx, cy);
@@ -1119,7 +1034,6 @@
                 clockCtx.restore();
             }
 
-            // Minute Hand (Sleek metallic grey hand pointing to ~2 o'clock)
             clockCtx.save();
             clockCtx.translate(cx, cy);
             clockCtx.rotate(minAngle);
@@ -1134,7 +1048,6 @@
             clockCtx.stroke();
             clockCtx.restore();
 
-            // Hour Hand (Thick bright white hand pointing to ~10 o'clock)
             clockCtx.save();
             clockCtx.translate(cx, cy);
             clockCtx.rotate(hourAngle);
@@ -1149,7 +1062,6 @@
             clockCtx.stroke();
             clockCtx.restore();
 
-            // Center Cap
             clockCtx.beginPath();
             clockCtx.arc(cx, cy, 7, 0, Math.PI * 2);
             clockCtx.fillStyle = '#ffffff';
@@ -1159,9 +1071,6 @@
         }
         drawClock();
 
-        // =========================================================================
-        // 5. WIDGET 2: BRIGHTNESS SLIDER, MOON TOGGLE & SIGNAL BARS
-        // =========================================================================
         const brightnessSlider = document.getElementById('brightness-slider');
         const brightnessFill = document.getElementById('brightness-fill');
         const brightnessIcon = document.getElementById('brightness-icon');
@@ -1190,7 +1099,6 @@
             isDraggingBrightness = false;
         });
 
-        // Moon Button & Sleep Mode Sync
         const moonBtn = document.getElementById('moon-btn');
         const sleepModeBtn = document.getElementById('sleep-mode-btn');
         const sleepModeLabel = document.getElementById('sleep-mode-label');
@@ -1213,8 +1121,7 @@
         moonBtn.addEventListener('click', toggleSleepMode);
         sleepModeBtn.addEventListener('click', toggleSleepMode);
 
-        // Signal Strength Bars Cycle
-        let signalLevel = 3; // Starts at 3 white bars + 1 dark grey bar as in reference
+        let signalLevel = 3;
         const signalBtn = document.getElementById('signal-btn');
         const signalBars = document.querySelectorAll('#signal-bars span');
         signalBtn.addEventListener('click', () => {
@@ -1225,12 +1132,9 @@
             });
         });
 
-        // =========================================================================
-        // 6. WIDGET 3: WEATHER CARD + ANIMATED CANVAS CLOUD/SUN/RAIN
-        // =========================================================================
         const weatherCanvas = document.getElementById('weather-canvas');
         const wCtx = weatherCanvas.getContext('2d');
-        let weatherType = 'partly'; // 'partly', 'rain', 'sunny'
+        let weatherType = 'partly';
         let useCelsius = false;
         let currentTempF = 79;
         let rainDrops = [
@@ -1273,14 +1177,12 @@
             sunPulse += 0.04;
 
             if (weatherType === 'sunny') {
-                // Big glowing golden sun
                 const r = 34 + Math.sin(sunPulse) * 1.5;
                 wCtx.beginPath();
                 wCtx.arc(78, 60, r, 0, Math.PI * 2);
                 wCtx.fillStyle = '#ff9f0a';
                 wCtx.fill();
             } else {
-                // Sun behind cloud (if partly)
                 if (weatherType === 'partly') {
                     wCtx.beginPath();
                     wCtx.arc(40, 42, 24 + Math.sin(sunPulse) * 1, 0, Math.PI * 2);
@@ -1288,7 +1190,6 @@
                     wCtx.fill();
                 }
 
-                // Crisp White Cloud matching reference shape
                 wCtx.save();
                 wCtx.fillStyle = '#ffffff';
                 wCtx.beginPath();
@@ -1299,7 +1200,6 @@
                 wCtx.fill();
                 wCtx.restore();
 
-                // 3 Diagonal Blue Raindrops (///) below the cloud
                 wCtx.strokeStyle = '#2b99ff';
                 wCtx.lineWidth = 3.2;
                 wCtx.lineCap = 'round';
@@ -1316,9 +1216,6 @@
         }
         drawWeatherGraphic();
 
-        // =========================================================================
-        // 7. WIDGET 4: 3D VINYL RECORD CANVAS & MUSIC PLAYER
-        // =========================================================================
         const vinylCanvas = document.getElementById('vinyl-canvas');
         const vCtx = vinylCanvas.getContext('2d');
         let vinylAngle = 0;
@@ -1327,7 +1224,7 @@
             const w = vinylCanvas.width;
             const h = vinylCanvas.height;
             const cx = w / 2;
-            const cy = 12; // Centered near top edge so bottom half of vinyl hangs down exactly like screenshot!
+            const cy = 12;
             const outerR = 148;
 
             vCtx.clearRect(0, 0, w, h);
@@ -1340,13 +1237,11 @@
             vCtx.translate(cx, cy);
             vCtx.rotate(vinylAngle);
 
-            // Base Black Vinyl Disc
             vCtx.beginPath();
             vCtx.arc(0, 0, outerR, 0, Math.PI * 2);
             vCtx.fillStyle = '#08080a';
             vCtx.fill();
 
-            // Anisotropic 3D Sheen Wedges (Matches Reference Image's Lighter & Darker Segments)
             for (let s = 0; s < 2; s++) {
                 vCtx.save();
                 vCtx.rotate(s * Math.PI + 0.55);
@@ -1359,7 +1254,6 @@
                 vCtx.restore();
             }
 
-            // Concentric Metallic Grooves matching exact ring spacing in reference image
             const grooveRadii = [58, 74, 90, 106, 122, 138];
             grooveRadii.forEach((r) => {
                 vCtx.beginPath();
@@ -1369,7 +1263,6 @@
                 vCtx.stroke();
             });
 
-            // Dark masking wedges so the grooves have the iconic split-arc reflection look from the screenshot
             for (let s = 0; s < 2; s++) {
                 vCtx.save();
                 vCtx.rotate(s * Math.PI - 0.35);
@@ -1382,14 +1275,12 @@
                 vCtx.restore();
             }
 
-            // Center Label (Bright Sky Blue #2b99ff or Track Color)
             const activeColor = tracks[currentTrackIdx].color;
             vCtx.beginPath();
             vCtx.arc(0, 0, 42, 0, Math.PI * 2);
             vCtx.fillStyle = activeColor;
             vCtx.fill();
 
-            // Inner Spindle Hole
             vCtx.beginPath();
             vCtx.arc(0, 0, 10, 0, Math.PI * 2);
             vCtx.fillStyle = '#050505';
@@ -1442,9 +1333,6 @@
             playTactileClick(660);
         });
 
-        // =========================================================================
-        // 8. WIDGET 5: VOLUME SLIDER, NOTIFICATION BELL & VOICE RECORD BUTTON
-        // =========================================================================
         const volumeSlider = document.getElementById('volume-slider');
         const volumeFill = document.getElementById('volume-fill');
         let isDraggingVolume = false;
@@ -1470,7 +1358,6 @@
             isDraggingVolume = false;
         });
 
-        // Bell Ring
         const bellBtn = document.getElementById('bell-btn');
         const bellSvg = document.getElementById('bell-svg');
         bellBtn.addEventListener('click', () => {
@@ -1480,7 +1367,6 @@
             playBellChime();
         });
 
-        // Record Button & Waveform Link
         let isRecording = false;
         let isWavePlaying = false;
         const recordBtn = document.getElementById('record-btn');
@@ -1493,9 +1379,6 @@
             playTactileClick(isRecording ? 820 : 420, 0.05);
         });
 
-        // =========================================================================
-        // 9. WIDGET 6: CHARGING / BATTERY CELLS (Interactive 25% -> 100%)
-        // =========================================================================
         let batteryLevel = 25;
         const batteryPercentEl = document.getElementById('battery-percent');
         const batteryStatusEl = document.getElementById('battery-status');
@@ -1532,9 +1415,6 @@
             playTactileClick(550);
         });
 
-        // =========================================================================
-        // 10. WIDGET 7: OFF/ON TOGGLE SWITCH & AUDIO WAVEFORM SCRUBBER
-        // =========================================================================
         let switchOn = false;
         const powerSwitch = document.getElementById('power-switch');
         const switchThumb = document.getElementById('switch-thumb');
@@ -1555,12 +1435,11 @@
             }
         });
 
-        // Waveform Canvas
         const waveCanvas = document.getElementById('wave-canvas');
         const waveCtx = waveCanvas.getContext('2d');
         const wavePlayhead = document.getElementById('wave-playhead');
         const baseHeights = [18, 34, 24, 52, 26, 38, 16, 46, 22, 50, 20, 32];
-        let wavePos = 14; // matches 14% red line position in screenshot
+        let wavePos = 14;
         let wavePhase = 0;
 
         document.getElementById('wave-toggle-btn').addEventListener('click', () => {
@@ -1607,9 +1486,6 @@
         }
         drawWaveform();
 
-        // =========================================================================
-        // 11. WIDGET 8: 3D MAGNETIC COMPASS CANVAS
-        // =========================================================================
         const compassCanvas = document.getElementById('compass-canvas');
         const cCtx = compassCanvas.getContext('2d');
         let compassTargetAngle = 0;
@@ -1635,16 +1511,14 @@
 
             cCtx.clearRect(0, 0, w, h);
 
-            // Smooth spring interpolation toward target angle
             compassCurrentAngle += (compassTargetAngle - compassCurrentAngle) * 0.1;
 
             cCtx.save();
             cCtx.translate(cx, cy);
             cCtx.rotate(compassCurrentAngle * 0.35);
 
-            // Minor Diagonal Tick Marks (8 non-cardinal ticks)
             for (let i = 0; i < 12; i++) {
-                if (i % 3 === 0) continue; // skip N, E, S, W positions
+                if (i % 3 === 0) continue;
                 const ang = (i * 30 - 90) * (Math.PI / 180);
                 cCtx.save();
                 cCtx.rotate(ang);
@@ -1658,25 +1532,19 @@
                 cCtx.restore();
             }
 
-            // Cardinal Letters (N in Red, E/S/W in Grey)
             cCtx.font = '600 19px Inter, sans-serif';
             cCtx.textAlign = 'center';
             cCtx.textBaseline = 'middle';
 
-            // N
             cCtx.fillStyle = '#f03e36';
             cCtx.fillText('N', 0, -r + 24);
-            // S
             cCtx.fillStyle = '#68686e';
             cCtx.fillText('S', 0, r - 24);
-            // E
             cCtx.fillText('E', r - 24, 1);
-            // W
             cCtx.fillText('W', -r + 26, 1);
 
             cCtx.restore();
 
-            // White North Pointer Triangle (Rotates with needle)
             cCtx.save();
             cCtx.translate(cx, cy);
             cCtx.rotate(compassCurrentAngle);
@@ -1690,7 +1558,6 @@
             cCtx.fill();
             cCtx.restore();
 
-            // Center Dark Circle + Crosshair (+)
             cCtx.beginPath();
             cCtx.arc(cx, cy, 25, 0, Math.PI * 2);
             cCtx.fillStyle = '#1c1c1f';
@@ -1710,9 +1577,6 @@
         }
         drawCompass();
 
-        // =========================================================================
-        // 12. WIDGET 9: TODAY CHECKLIST WIDGET
-        // =========================================================================
         const todoState = [true, false, false];
         const todoLabels = document.querySelectorAll('#todo-list label');
         const todoProgress = document.getElementById('todo-progress');
@@ -1751,14 +1615,11 @@
             });
         });
 
-        // =========================================================================
-        // 13. WIDGET 10: WATER INTAKE FLUID WAVE SIMULATION CANVAS
-        // =========================================================================
         const waterCanvas = document.getElementById('water-canvas');
         const waterCtx = waterCanvas.getContext('2d');
         const waterAmountEl = document.getElementById('water-amount');
         let waterMl = 250;
-        let waterFillRatio = 0.44; // Matches exact wave height in reference screenshot
+        let waterFillRatio = 0.44;
         let targetFillRatio = 0.44;
         let waveTime = 0;
         let waveAmpBoost = 0;
@@ -1788,7 +1649,6 @@
             const baseY = h * (1 - waterFillRatio);
             const amp = 14 + waveAmpBoost;
 
-            // Back Wave (Deep Navy Blue #14497a on Right)
             waterCtx.beginPath();
             waterCtx.moveTo(0, h);
             for (let x = 0; x <= w; x += 8) {
@@ -1800,7 +1660,6 @@
             waterCtx.fillStyle = '#164b7d';
             waterCtx.fill();
 
-            // Front Wave (Vibrant Sky Blue #2b99ff Cresting on Left, Matching Screenshot)
             waterCtx.beginPath();
             waterCtx.moveTo(0, h);
             for (let x = 0; x <= w; x += 8) {
@@ -1816,9 +1675,6 @@
         }
         drawWaterWaves();
 
-        // =========================================================================
-        // 14. WIDGET 11: WALLET / BALANCE CARD
-        // =========================================================================
         const accounts = [
             { balance: '$94,100', label: 'BALANCE', order: ['bg-[#2b99ff]', 'bg-[#f5b418]', 'bg-[#d93831]'] },
             { balance: '$42,850', label: 'SAVINGS', order: ['bg-[#f5b418]', 'bg-[#d93831]', 'bg-[#2b99ff]'] },
@@ -1834,9 +1690,6 @@
             playTactileClick(690, 0.04);
         });
 
-        // =========================================================================
-        // 15. WIDGET 12: CALENDAR / SCHEDULE WIDGET
-        // =========================================================================
         const calDays = [
             { weekday: 'Tuesday', num: '22', count: '6', e1: ['Deep Focus Session', '9:00 AM – 11:00 AM'], e2: ['Client Sync: Feedback', '12:30 PM – 1:15 PM'] },
             { weekday: 'Wednesday', num: '23', count: '4', e1: ['3D Shader Review', '10:00 AM – 11:30 AM'], e2: ['Design System Sync', '2:00 PM – 3:00 PM'] },
@@ -1866,9 +1719,6 @@
             });
         });
 
-        // =========================================================================
-        // 16. 3D BOARD CAMERA MODES & EXACT REFERENCE RESET
-        // =========================================================================
         const btnTilt = document.getElementById('toggle-3d-tilt');
         const btnOrbit = document.getElementById('toggle-3d-orbit');
         const btnReset = document.getElementById('reset-design-btn');
@@ -1889,7 +1739,6 @@
         });
 
         btnReset.addEventListener('click', () => {
-            // Restores every single widget to the exact pixel state of the reference image
             isometricMode = false;
             btnOrbit.classList.remove('active');
             board.style.transform = '';
@@ -1921,7 +1770,7 @@
             accountIdx = 0;
             document.getElementById('wallet-balance').textContent = '$94,100';
             document.getElementById('wallet-label').textContent = 'BALANCE';
-            calDayIdx = 2; // so clicking below wraps to 0
+            calDayIdx = 2;
             document.getElementById('calendar-date-box').click();
             calRedLine.style.top = '7px';
             playTactileClick(800);
